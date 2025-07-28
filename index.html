@@ -1,12 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MindLens Landing Page</title>
-</head>
-<body>
-  <h1>Welcome to MindLens</h1>
-  <p>This is the landing page of the future.</p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindLens – Unlock Your Thinking</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  </head>
+  <body class="bg-gray-100 text-gray-900">
+    <!-- Hero Section -->
+    <section class="bg-white py-16 shadow-sm">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-5xl font-bold mb-4">MindLens</h1>
+        <p class="text-xl mb-6">Nền tảng đánh giá tư duy bằng AI đầu tiên – Dành cho những người dám nghĩ khác!</p>
+        <a href="#demo" class="bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-xl text-lg font-semibold transition">Dùng thử giả lập</a>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-20 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-8 text-center">Cách MindLens hoạt động</h2>
+        <div class="grid md:grid-cols-3 gap-10">
+          <div class="bg-white p-6 rounded-2xl shadow">
+            <h3 class="text-xl font-bold mb-2">1. Đặt câu hỏi tình huống</h3>
+            <p>Người dùng được đặt vào tình huống đời thực cần phản ứng và suy nghĩ.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow">
+            <h3 class="text-xl font-bold mb-2">2. Phân tích phản hồi</h3>
+            <p>Câu trả lời được hệ thống (hoặc giả lập) phân tích theo nhiều tiêu chí như logic, cảm xúc, sáng tạo.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow">
+            <h3 class="text-xl font-bold mb-2">3. Trả điểm và phân loại tư duy</h3>
+            <p>Người dùng được xếp loại dựa trên phong cách tư duy và mức độ khác biệt so với đám đông.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="py-20">
+      <div class="container mx-auto px-4 max-w-3xl">
+        <h2 class="text-3xl font-bold mb-4 text-center">Thử sức ngay!</h2>
+        <p class="text-center text-lg mb-8">Hãy trả lời câu hỏi dưới đây để trải nghiệm thử MindLens.</p>
+        <form class="bg-white p-8 rounded-2xl shadow" onsubmit="handleSubmit(event)">
+          <label class="block text-lg font-semibold mb-2">Câu hỏi:</label>
+          <p class="mb-4 italic">"Bạn bị điểm thấp trong một kỳ thi quan trọng. Phản ứng đầu tiên và kế hoạch xử lý của bạn là gì?"</p>
+          <textarea id="answer" class="w-full h-40 p-4 border border-gray-300 rounded-xl mb-4" placeholder="Nhập câu trả lời của bạn..."></textarea>
+          <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-xl text-lg font-semibold transition">Phân tích tư duy</button>
+        </form>
+        <div id="result" class="mt-8 hidden bg-green-100 text-green-800 p-6 rounded-xl shadow"></div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-sm text-gray-500">
+      © 2025 MindLens. Built by Lucien.
+    </footer>
+
+    <script>
+      function handleSubmit(e) {
+        e.preventDefault();
+        const answer = document.getElementById("answer").value.trim();
+        const result = document.getElementById("result");
+
+        if (!answer) {
+          result.classList.remove("hidden");
+          result.innerText = "Vui lòng nhập câu trả lời để hệ thống phân tích.";
+          result.classList.remove("bg-green-100");
+          result.classList.add("bg-red-100", "text-red-800");
+          return;
+        }
+
+        // Fake analysis (giả lập)
+        result.classList.remove("hidden", "bg-red-100", "text-red-800");
+        result.classList.add("bg-green-100", "text-green-800");
+        result.innerHTML = `✅ <strong>Phân tích sơ bộ:</strong><br>
+          • Phản ứng của bạn thể hiện EQ cao và khả năng tự nhìn nhận lỗi lầm.<br>
+          • Lập kế hoạch cải thiện điểm số cho thấy tư duy logic và định hướng phát triển cá nhân.<br>
+          • Điểm tạm tính: <strong>8.3/10</strong> (Tư duy phát triển, hướng nội, tự chủ tốt)`;
+      }
+    </script>
+  </body>
 </html>
+
